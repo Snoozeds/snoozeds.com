@@ -4,7 +4,7 @@
   "description": "A simple website displaying about me and my projects.",
   "main": "index.js",
   "scripts": {
-    "tailwind-build": "npx tailwindcss -i ./src/input.css -o ./src/output.css --watch"
+    "tailwind-build": "npx tailwindcss -i input.css -o output.css --watch"
   },
   "keywords": [],
   "author": "Snoozeds",
