@@ -1,0 +1,16 @@
+{
+  "name": "snoozeds.com",
+  "version": "1.0.0",
+  "description": "A simple website displaying about me and my projects.",
+  "main": "index.js",
+  "scripts": {
+    "tailwind-build": "npx tailwindcss -i input.css -o output.css --watch"
+  },
+  "keywords": [],
+  "author": "Snoozeds",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^3.4.3"
+  },
+  "devDependencies": {}
+}

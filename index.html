@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Snoozeds</title>
+    <meta name="description" content="About me" />
+    <meta name="author" content="Snoozeds" />
+    <meta name="theme-color" content="#111827" />
+    <meta property="og:title" content="Snoozeds" />
+    <meta property="og:description" content="About me" />
+    <meta property="og:image" content="https://snoozeds.com/assets/profile.png" />
+    <meta property="og:url" content="https://snoozeds.com" />
+    <!-- Include Tailwind CSS -->
+    <link href="output.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body class="dark:bg-midnight">
+    <div class="flex justify-center items-center min-h-screen">
+        <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3">
+            <div class="flex flex-col md:flex-row items-center">
+                <!-- Image -->
+                <img src="assets/profile.png" alt="logo"
+                    class="w-48 md:w-64 h-auto rounded md:mr-4 mb-4 md:mb-0 border-solid border-2 border-black dark:border-white"
+                    style="max-width: 100%; height: auto;" />
+
+                <!-- Text -->
+                <div class="flex flex-col items-start">
+                    <h1 class="text-4xl font-bold text-gray-800 dark:text-white">Hi, I'm Snoozeds. <span
+                            class="wave">👋</span></h1>
+                    <p class="text-lg font-bold text-gray-800 dark:text-white max-w-md mb-5">
+                        I'm an autodidact developer from England, UK. I mainly have experience with: <br />
+                        <br />
+                        HTML, CSS, JavaScript and Node (Backend).
+                    </p>
+                    <!-- Socials -->
+                    <div class="flex items-center sm:justify-center md:justify-start">
+                        <!-- pronouns.page -->
+                        <a href="https://en.pronouns.page/@snoozeds" target="_blank"
+                            class="mr-4 hover:scale-110 transition duration-500 ease-in-out">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 650" width="50" height="50">
+                                <path
+                                    d="M396.52 174.35c1.35-2.4.21-4.35-2.54-4.35l-48.2.03c-2.75 0-6.15 1.94-7.54 4.31l-118.1 199.77c-16.48 27.15-39.48 33.15-61.58 30.47-37.94-4.6-58.34-32.45-58.34-69.54 0-37.25 30.31-67.56 67.56-67.56h75c2.75 0 6.12-1.95 7.48-4.34l27.03-47.2c1.37-2.39.23-4.34-2.52-4.34h-107c-68.06 0-123.44 55.37-123.44 123.44 0 32.89 12.85 68.36 36.22 91.54 23.03 22.84 53.8 31.21 86.64 31.89 18.54.21 69.46-.21 93.33-42.68 26.73-47.57 136-241.44 136-241.44zM571.94 244.44c-23.03-22.84-53.8-31.21-86.64-31.89-18.54-.21-69.46.21-93.33 42.68-26.72 47.55-136 241.42-136 241.42-1.35 2.4-.21 4.35 2.54 4.35l48.2-.03c2.75 0 6.15-1.94 7.54-4.31l118.1-199.77c16.48-27.15 39.48-33.15 61.58-30.47 37.94 4.6 58.34 32.45 58.34 69.54 0 37.25-30.31 67.56-67.56 67.56h-75c-2.75 0-6.12 1.95-7.48 4.34l-27.03 47.2c-1.37 2.39-.23 4.34 2.52 4.34h107c68.06 0 123.44-55.37 123.44-123.44 0-32.87-12.85-68.34-36.22-91.52z"
+                                    fill="#C71585" />
+                            </svg>
+                        </a>
+                        <!-- youtube -->
+                        <a href="https://www.youtube.com/channel/UCIL7el6oqypKDaZZSjVmP_g" target="_blank"
+                            class="mr-4 hover:scale-110 transition duration-700 ease-in-out">
+                            <i class="fab fa-youtube text-4xl" style="color: red;"></i>
+                        </a>
+                        <!-- github -->
+                        <a href="https://github.com/Snoozeds" target="_blank"
+                            class="mr-4 hover:scale-110 transition duration-500 ease-in-out">
+                            <i class="fab fa-github text-4xl text-gray-800 dark:text-white"></i>
+                        </a>
+                        <!-- twitter -->
+                        <a href="https://twitter.com/Snoozeds" target="_blank"
+                            class="mr-4 hover:scale-110 transition duration-500 ease-in-out">
+                            <i class="fab fa-twitter text-4xl" style="color: #1d9bf0;"></i>
+                        </a>
+                        <!-- steam -->
+                        <a href="https://steamcommunity.com/id/Snoozeds/" target="_blank"
+                            class="mr-4 hover:scale-110 transition duration-500 ease-in-out">
+                            <i class="fab fa-steam text-4xl text-gray-800 dark:text-white"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 'Portfolio' Section -->
+            <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="flex flex-col items-center">
+                    <a class="text-lg font-semibold mb-2 text-gray-800 dark:text-white hover:text-cyan-600 hover:underline"
+                        href="https://github.com/Snoozeds/yanta" taget="_blank">Yanta</a>
+                    <img src="assets/yanta-preview.png" alt="Image 1"
+                        class="border-solid border-2 border-black dark:border-white portfolio-image"
+                        data-src="assets/yanta.png" />
+                    <p class="text-sm text-gray-800 mt-2 dark:text-white">
+                        Toolkit: C#, GTK<br />
+                        <br />
+                        Primarily built for Linux, Yanta ("yet another note taking application") is an open-source,
+                        simple and lightweight application for editing text files. It is currently in a limbo state. All
+                        code was contributed by
+                        me.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <a class="text-lg font-semibold mb-2 text-gray-800 dark:text-white hover:text-cyan-600 hover:underline"
+                        href="https://github.com/Snoozeds/DankRPG" target="_blank">DankRPG</a>
+                    <div class="relative">
+                        <img src="assets/dankrpg-preview.png" alt="Image 2"
+                            class="border-solid border-2 border-black dark:border-white portfolio-image"
+                            data-src="assets/dankrpg1.png" />
+                        <!-- Overlay for full-sized images -->
+                        <div class="overlay" id="overlay">
+                            <img id="fullImage" src="" alt="Full Image" />
+                            <div class="absolute bottom-6 left-0 right-0 flex justify-center">
+                                <div class="bg-gray-800 bg-opacity-75 px-2 py-1 rounded-lg text-white"
+                                    id="imageCounter"></div>
+                                <div class="close-button" onclick="closeOverlay()">
+                                    <div class="close-button-container">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="arrow-container">
+                                <!-- Left arrow -->
+                                <div class="arrow arrow-left" onclick="changeImage(-1, getCurrentMaxImages())">
+                                    <i class="fas fa-arrow-left"></i>
+                                </div>
+                                <!-- Right arrow -->
+                                <div class="arrow arrow-right" onclick="changeImage(1, getCurrentMaxImages())">
+                                    <i class="fas fa-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-800 mt-2 dark:text-white">
+                        Toolkit: Docker, Discord.JS, Redis, Express<br />
+                        <br />
+                        DankRPG <span class="font-bold">was</span> an open-source Discord RPG and economy bot, with an
+                        in-depth fight system, duel system, 50+ commands, 60+ items, 100+ servers, automated events and
+                        quests. All code was
+                        contributed by me.
+                    </p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <a class="text-lg font-semibold mb-2 text-gray-800 dark:text-white hover:text-cyan-600 hover:underline"
+                        href="https://github.com/Snoozeds?tab=repositories&q=website&type=&language=&sort="
+                        target="_blank">Websites</a>
+                    <img src="assets/websites-preview.png" alt="Image 3"
+                        class="border-solid border-2 border-black dark:border-white portfolio-image"
+                        data-src="assets/websites1.png" />
+                    <p class="text-sm text-gray-800 mt-2 dark:text-white">
+                        Toolkit: Tailwind, Docsify, Bootstrap<br />
+                        <br />
+                        I have made multiple websites for my own projects, all open-source on Github. I also wrote
+                        extensive documentation in the past, alongside working with Docker, Uptime-Kuma, and Ubuntu.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/gallery.js"></script>
+</body>
+
+</html>
