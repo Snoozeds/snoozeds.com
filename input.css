@@ -16,7 +16,7 @@
 .wave {
   animation-name: wave-animation;
   animation-duration: 3s;
-  animation-iteration-count: 5;
+  animation-iteration-count: infinite;
   transform-origin: 70% 70%;
   display: inline-block;
   margin-right: auto;

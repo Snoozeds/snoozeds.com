@@ -690,6 +690,11 @@ video {
   padding-bottom: 0.25rem;
 }
 
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
@@ -716,6 +721,11 @@ video {
 .text-gray-800 {
   --tw-text-opacity: 1;
   color: rgb(31 41 55 / var(--tw-text-opacity));
+}
+
+.text-pink-600 {
+  --tw-text-opacity: 1;
+  color: rgb(219 39 119 / var(--tw-text-opacity));
 }
 
 .text-white {
@@ -780,7 +790,7 @@ video {
 .wave {
   animation-name: wave-animation;
   animation-duration: 3s;
-  animation-iteration-count: 5;
+  animation-iteration-count: infinite;
   transform-origin: 70% 70%;
   display: inline-block;
   margin-right: auto;
@@ -941,6 +951,11 @@ video {
   .dark\:bg-midnight {
     --tw-bg-opacity: 1;
     background-color: rgb(42 36 56 / var(--tw-bg-opacity));
+  }
+
+  .dark\:text-purple-600 {
+    --tw-text-opacity: 1;
+    color: rgb(147 51 234 / var(--tw-text-opacity));
   }
 
   .dark\:text-white {
