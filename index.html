@@ -20,6 +20,11 @@
 </head>
 
 <body class="dark:bg-midnight">
+    <!-- Dark/light toggle -->
+    <button id="theme-toggle"
+        class="absolute top-4 right-4 p-2 rounded-full bg-gray-800 text-white dark:bg-white dark:text-gray-800">
+        <i class="fas fa-sun"></i>
+    </button>
     <div class="flex justify-center items-center min-h-screen">
         <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3">
             <div class="flex flex-col md:flex-row items-center">
@@ -30,12 +35,14 @@
 
                 <!-- Text -->
                 <div class="flex flex-col items-start">
-                    <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Hi, I'm Snoozeds. <span class="text-3xl font-bold text-pink-600 dark:text-purple-600">&lpar;she/her&rpar;</span> <span
-                            class="wave">👋</span></h1>
+                    <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Hi, I'm Snoozeds. <span
+                            class="hover:cursor-help text-md font-bold text-pink-600 dark:text-purple-600"><span class="tooltip" data-tooltip="🏳️‍⚧️ male to female.">&lpar;she/her&rpar;</span></span>
+                        <span class="wave">👋</span>
+                    </h1>
                     <p class="text-lg font-bold text-gray-800 dark:text-white max-w-md mb-5">
-                        I'm an autodidact developer from England, UK. I mainly have experience with: <br />
+                        I'm an autodidact developer from England, UK. <br />
                         <br />
-                        HTML, CSS, JavaScript and Node (Backend).
+                        Main experience: HTML, CSS, JavaScript, NodeJS. <br /> Also learning: Python, C#, GDScript
                     </p>
                     <!-- Socials -->
                     <div class="flex items-center sm:justify-center md:justify-start">
@@ -77,12 +84,14 @@
                     <a class="text-lg font-semibold mb-2 text-gray-800 dark:text-white hover:text-cyan-600 hover:underline"
                         href="https://github.com/Snoozeds/UnrealLocresEditor" taget="_blank">UnrealLocresEditor</a>
                     <img src="assets/ULE-preview.png" alt="Image 1"
-                        class="border-solid border-2 border-black dark:border-white portfolio-image"
+                        class="border-solid border-2 border-pink-600 dark:border-white portfolio-image"
                         data-src="assets/ULE.png" />
                     <p class="text-sm text-gray-800 mt-2 dark:text-white">
                         Toolkit: C#, Avalonia<br />
                         <br />
-                        A tool made for modding Unreal Engine games, UnrealLocresEditor is an open-source GUI application that allows the user to modify a game's localisation files, changing the text a game displays, or making translations for a game.
+                        A tool made for modding Unreal Engine games, UnrealLocresEditor is an open-source GUI
+                        application that allows the user to modify a game's localisation files, changing the text a game
+                        displays, or making translations for a game.
                     </p>
                 </div>
                 <div class="flex flex-col items-center">
@@ -90,7 +99,7 @@
                         href="https://github.com/Snoozeds/DankRPG" target="_blank">DankRPG</a>
                     <div class="relative">
                         <img src="assets/dankrpg-preview.png" alt="Image 2"
-                            class="border-solid border-2 border-black dark:border-white portfolio-image"
+                            class="border-solid border-2 border-pink-600 dark:border-white portfolio-image"
                             data-src="assets/dankrpg1.png" />
                         <!-- Overlay for full-sized images -->
                         <div class="overlay" id="overlay">
@@ -130,7 +139,7 @@
                         href="https://github.com/Snoozeds?tab=repositories&q=website&type=&language=&sort="
                         target="_blank">Websites</a>
                     <img src="assets/websites-preview.png" alt="Image 3"
-                        class="border-solid border-2 border-black dark:border-white portfolio-image"
+                        class="border-solid border-2 border-pink-600 dark:border-white portfolio-image"
                         data-src="assets/websites1.png" />
                     <p class="text-sm text-gray-800 mt-2 dark:text-white">
                         Toolkit: Tailwind, Docsify, Bootstrap<br />
@@ -143,6 +152,7 @@
         </div>
     </div>
     <script src="js/gallery.js"></script>
+    <script src="js/theme.js"></script>
 </body>
 
 </html>

@@ -2,29 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
+#theme-toggle {
+    cursor: pointer;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+}
+
+/* Tooltip text */
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+    font-size: 1rem;
+    z-index: 10;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+    visibility: visible;
+}
+
 @keyframes wave-animation {
-    0% { transform: rotate( 0.0deg) }
-   10% { transform: rotate(14.0deg) }
-   20% { transform: rotate(-8.0deg) }
-   30% { transform: rotate(14.0deg) }
-   40% { transform: rotate(-4.0deg) }
-   50% { transform: rotate(10.0deg) }
-   60% { transform: rotate( 0.0deg) }
-  100% { transform: rotate( 0.0deg) }
+    0% {
+        transform: rotate(0.0deg)
+    }
+
+    10% {
+        transform: rotate(14.0deg)
+    }
+
+    20% {
+        transform: rotate(-8.0deg)
+    }
+
+    30% {
+        transform: rotate(14.0deg)
+    }
+
+    40% {
+        transform: rotate(-4.0deg)
+    }
+
+    50% {
+        transform: rotate(10.0deg)
+    }
+
+    60% {
+        transform: rotate(0.0deg)
+    }
+
+    100% {
+        transform: rotate(0.0deg)
+    }
 }
 
 .wave {
-  animation-name: wave-animation;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  transform-origin: 70% 70%;
-  display: inline-block;
-  margin-right: auto;
+    animation-name: wave-animation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+    margin-right: auto;
 }
 
 .portfolio-image:hover {
-  cursor: zoom-in;
+    cursor: zoom-in;
 }
+
 .overlay {
     position: fixed;
     top: 0;
@@ -37,32 +95,41 @@
     align-items: center;
     z-index: 9999;
 }
+
 .overlay img {
     max-width: 90%;
     max-height: 90%;
 }
+
 .arrow-container {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     width: 90%;
-    max-width: 1017px; /* Maximum width of the image container */
+    max-width: 1017px;
+    /* Maximum width of the image container */
     display: flex;
     justify-content: space-between;
     padding: 0 20px;
 }
+
 .arrow {
     font-size: 24px;
     color: white;
     cursor: pointer;
     z-index: 99999;
 }
+
 .arrow-left {
-    transform: translateX(calc(-50% - 50px)); /* Half the arrow width */
+    transform: translateX(calc(-50% - 50px));
+    /* Half the arrow width */
 }
+
 .arrow-right {
-    transform: translateX(calc(50% + 50px)); /* Half the arrow width */
+    transform: translateX(calc(50% + 50px));
+    /* Half the arrow width */
 }
+
 .image-counter {
     position: absolute;
     bottom: 0;
@@ -71,6 +138,7 @@
     display: flex;
     justify-content: center;
 }
+
 .image-counter div {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 0.5rem 1rem;
