@@ -28,15 +28,22 @@
     <div class="flex justify-center items-center min-h-screen">
         <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3">
             <div class="flex flex-col md:flex-row items-center">
+                <!-- Enlarged image -->
+                <div id="imageModal"
+                    class="hidden fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center">
+                    <span class="close-modal absolute top-4 right-6 text-white text-3xl cursor-pointer">&times;</span>
+                    <img id="modalImage" class="max-w-full max-h-full" alt="Enlarged Profile Image" />
+                </div>
                 <!-- Image -->
-                <img src="assets/profile.png" alt="logo"
-                    class="w-48 md:w-64 h-auto rounded md:mr-4 mb-4 md:mb-0 border-solid border-2 border-black dark:border-white"
+                <img id="profileImage" src="assets/profile.png" alt="logo"
+                    class="w-48 md:w-64 h-auto rounded md:mr-4 mb-4 md:mb-0 border-solid border-2 border-black dark:border-white hover:cursor-zoom-in transition duration-300 ease-in-out"
                     style="max-width: 100%; height: auto;" />
 
                 <!-- Text -->
                 <div class="flex flex-col items-start">
                     <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Hi, I'm Snoozeds. <span
-                            class="hover:cursor-help text-md font-bold text-pink-600 dark:text-purple-600"><span class="tooltip" data-tooltip="🏳️‍⚧️ male to female.">&lpar;she/her&rpar;</span></span>
+                            class="hover:cursor-help text-md font-bold text-pink-600 dark:text-purple-600"><span
+                                class="tooltip" data-tooltip="🏳️‍⚧️ male to female.">&lpar;she/her&rpar;</span></span>
                         <span class="wave">👋</span>
                     </h1>
                     <p class="text-lg font-bold text-gray-800 dark:text-white max-w-md mb-5">
@@ -153,6 +160,7 @@
     </div>
     <script src="js/gallery.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/imageModel.js"></script>
 </body>
 
 </html>
