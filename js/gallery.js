@@ -1,16 +1,18 @@
 let currentImageIndex = 1;
-const maxImagesDankRPG = 4;
-const maxImagesWebsites = 2;
+const maxImagesULE = 5;
+const maxImagesPAM = 4;
+const maxImagesWeb = 2;
 
 function getCurrentMaxImages() {
     const currentImageType = getCurrentImageType();
-    if (currentImageType === 'dankrpg') {
-        return maxImagesDankRPG;
+    if (currentImageType === 'ule') {
+        return maxImagesULE;
+    } else if (currentImageType === 'pam') {
+        return maxImagesPAM;
     } else if (currentImageType === 'websites') {
-        return maxImagesWebsites;
+        return maxImagesWeb;
     }
 }
-
 
 function changeImage(delta, maxImages) {
     currentImageIndex += delta;
@@ -21,19 +23,18 @@ function changeImage(delta, maxImages) {
     }
     const fullImageSrc = `assets/${getCurrentImageType()}${currentImageIndex}.png`;
     document.getElementById('fullImage').src = fullImageSrc;
-    updateImageCounter(maxImages); // Update image counter
-    toggleArrows(); // Toggle arrows visibility after image change
+    updateImageCounter(maxImages);
+    toggleArrows();
 }
 
-// Function to update image counter
 function updateImageCounter(maxImages) {
     const counterElement = document.getElementById('imageCounter');
     const hasMultipleImages = maxImages > 1;
     if (hasMultipleImages) {
         counterElement.textContent = `Image ${currentImageIndex} of ${maxImages}`;
-        counterElement.style.display = 'block'; // Show the counter if there are multiple images
+        counterElement.style.display = 'block';
     } else {
-        counterElement.style.display = 'none'; // Hide the counter if there's only one image
+        counterElement.style.display = 'none';
     }
 }
 
@@ -45,32 +46,31 @@ portfolioImages.forEach(image => {
         const fullImageSrc = this.getAttribute('data-src');
         document.getElementById('fullImage').src = fullImageSrc;
         document.getElementById('overlay').style.display = 'flex';
-        currentImageIndex = 1; // Reset to first image when opening the overlay
-        toggleArrows(); // Toggle arrows visibility after overlay opens
-        currentImageType = getCurrentImageType(); // Update current image type
+        currentImageIndex = 1;
+        toggleArrows();
+        currentImageType = getCurrentImageType();
         let maxImages;
-        if (currentImageType === 'dankrpg') {
-            maxImages = maxImagesDankRPG;
+        if (currentImageType === 'ule') {
+            maxImages = maxImagesULE;
+        } else if (currentImageType === 'pam') {
+            maxImages = maxImagesPAM;
         } else if (currentImageType === 'websites') {
-            maxImages = maxImagesWebsites;
-        } else if (currentImageType === 'yanta '){
-            maxImages = 0;
+            maxImages = maxImagesWeb;
         }
-        updateImageCounter(maxImages); // Update image counter initially
+        updateImageCounter(maxImages);
     });
 });
 
 function getCurrentImageType() {
     const fullImageSrc = document.getElementById('fullImage').src;
-    if (fullImageSrc.includes('dankrpg')) {
-        return 'dankrpg';
+    if (fullImageSrc.includes('ule')) {
+        return 'ule';
+    } else if (fullImageSrc.includes('pam')) {
+        return 'pam';
     } else if (fullImageSrc.includes('websites')) {
         return 'websites';
-    } else if (fullImageSrc.includes('yanta')) {
-        return 'yanta';
     }
 }
-
 
 document.getElementById('overlay').addEventListener('click', function(e) {
     if (e.target.id === 'overlay') {
@@ -79,18 +79,23 @@ document.getElementById('overlay').addEventListener('click', function(e) {
 });
 
 function toggleArrows() {
-    const hasMultipleImages = document.getElementById('fullImage').src.includes('dankrpg') || document.getElementById('fullImage').src.includes('websites');
+    const hasMultipleImages = getCurrentMaxImages() > 1;
     const arrows = document.querySelectorAll('.arrow');
     arrows.forEach(arrow => {
         arrow.style.display = hasMultipleImages ? 'block' : 'none';
     });
 }
 
-// Add event listener for keyboard arrow keys
 document.addEventListener('keydown', function(event) {
     const overlay = document.getElementById('overlay');
-    const hasMultipleImages = overlay.style.display === 'flex' && (document.getElementById('fullImage').src.includes('dankrpg') || document.getElementById('fullImage').src.includes('websites'));
-    const maxImages = getCurrentImageType() === 'dankrpg' ? maxImagesDankRPG : maxImagesWebsites;
+    const fullImageSrc = document.getElementById('fullImage').src.toLowerCase();
+    const hasMultipleImages = overlay.style.display === 'flex' &&
+        (fullImageSrc.includes('ule') || fullImageSrc.includes('pam') || fullImageSrc.includes('websites'));
+
+    const currentType = getCurrentImageType();
+    const maxImages = currentType === 'ule' ? maxImagesULE :
+                      currentType === 'pam' ? maxImagesPAM :
+                      maxImagesWeb;
 
     if (hasMultipleImages) {
         if (event.key === 'ArrowLeft') {
@@ -101,23 +106,10 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
-function getCurrentImageType() {
-    const fullImageSrc = document.getElementById('fullImage').src;
-    if (fullImageSrc.includes('dankrpg')) {
-        return 'dankrpg';
-    } else if (fullImageSrc.includes('websites')) {
-        return 'websites';
-    } else if (fullImageSrc.includes('yanta')) {
-        return 'yanta';
-    }
-}
-
 function closeOverlay() {
     document.getElementById('overlay').style.display = 'none';
 }
 
-
-// Mobile
 let touchStartX = 0;
 let touchEndX = 0;
 const swipeThreshold = 30;
@@ -133,10 +125,8 @@ document.getElementById('fullImage').addEventListener('touchmove', function(even
 document.getElementById('fullImage').addEventListener('touchend', function() {
     const deltaX = touchEndX - touchStartX;
     if (deltaX > swipeThreshold) {
-        // Swipe right, go to previous image
         changeImage(-1, getCurrentMaxImages());
     } else if (deltaX < -swipeThreshold) {
-        // Swipe left, go to next image
         changeImage(1, getCurrentMaxImages());
     }
 });
