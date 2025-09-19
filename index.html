@@ -12,6 +12,25 @@
     <meta property="og:description" content="About me" />
     <meta property="og:image" content="https://snoozeds.com/assets/profile.png" />
     <meta property="og:url" content="https://snoozeds.com" />
+
+    <script>
+        // Update theme
+        (function () {
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else if (currentTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                // No saved preference, check system preference
+                const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (prefersDarkScheme) {
+                    document.documentElement.classList.add('dark');
+                }
+            }
+        })();
+    </script>
+
     <!-- Include Tailwind CSS -->
     <link href="output.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -55,9 +74,10 @@
                     <div class="flex items-center sm:justify-center md:justify-start">
 
                         <!-- blog -->
-                         <a href="https://blog.snoozeds.com" target="_blank"
+                        <a href="https://blog.snoozeds.com" target="_blank"
                             class="mr-4 hover:scale-110 transition duration-500 ease-in-out">
                             <i class="fas fa-newspaper text-4xl text-gray-800 dark:text-white"></i>
+                        </a>
 
                         <!-- github -->
                         <a href="https://github.com/Snoozeds" target="_blank"
@@ -143,7 +163,7 @@
                         </p>
                     </div>
                 </div>
-                
+
                 <!-- Last.fm embed -->
                 <div class="flex justify-center mt-10">
                     <div class="flex flex-col items-center">
@@ -162,32 +182,54 @@
                 </div>
             </div>
 
-                <!-- Overlay for full-sized images -->
-                <div class="overlay" id="overlay">
-                    <img id="fullImage" src="" alt="Full Image" />
-                    <div class="absolute bottom-6 left-0 right-0 flex justify-center">
-                        <div class="bg-gray-800 bg-opacity-75 px-2 py-1 rounded-lg text-white" id="imageCounter"></div>
-                        <div class="close-button" onclick="closeOverlay()">
-                            <div class="close-button-container">
-                                <i class="fas fa-times"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="arrow-container">
-                        <!-- Left arrow -->
-                        <div class="arrow arrow-left" onclick="changeImage(-1, getCurrentMaxImages())">
-                            <i class="fas fa-arrow-left"></i>
-                        </div>
-                        <!-- Right arrow -->
-                        <div class="arrow arrow-right" onclick="changeImage(1, getCurrentMaxImages())">
-                            <i class="fas fa-arrow-right"></i>
+            <!-- Overlay for full-sized images -->
+            <div class="overlay" id="overlay">
+                <img id="fullImage" src="" alt="Full Image" />
+                <div class="absolute bottom-6 left-0 right-0 flex justify-center">
+                    <div class="bg-gray-800 bg-opacity-75 px-2 py-1 rounded-lg text-white" id="imageCounter"></div>
+                    <div class="close-button" onclick="closeOverlay()">
+                        <div class="close-button-container">
+                            <i class="fas fa-times"></i>
                         </div>
                     </div>
                 </div>
+                <div class="arrow-container">
+                    <!-- Left arrow -->
+                    <div class="arrow arrow-left" onclick="changeImage(-1, getCurrentMaxImages())">
+                        <i class="fas fa-arrow-left"></i>
+                    </div>
+                    <!-- Right arrow -->
+                    <div class="arrow arrow-right" onclick="changeImage(1, getCurrentMaxImages())">
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
 
-                <script src="js/gallery.js"></script>
-                <script src="js/theme.js"></script>
-                <script src="js/imageModal.js"></script>
+            <script>
+                // Theme toggling
+                document.addEventListener('DOMContentLoaded', () => {
+                    const themeToggleButton = document.getElementById('theme-toggle');
+
+                    // Update the icon based on current theme
+                    const updateIcon = (isDarkMode) => {
+                        themeToggleButton.innerHTML = isDarkMode
+                            ? '<i class="fas fa-moon"></i>'
+                            : '<i class="fas fa-sun"></i>';
+                    };
+
+                    updateIcon(document.documentElement.classList.contains('dark'));
+
+                    // Handle theme toggle clicks
+                    themeToggleButton.addEventListener('click', () => {
+                        const isDarkMode = document.documentElement.classList.toggle('dark');
+                        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+                        updateIcon(isDarkMode);
+                    });
+                });
+            </script>
+
+            <script src="js/gallery.js"></script>
+            <script src="js/imageModal.js"></script>
 </body>
 
 </html>

@@ -5,6 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support Me</title>
+
+    <script>
+        // Apply theme
+        (function () {
+            const currentTheme = localStorage.getItem('theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.classList.add('dark');
+            } else if (currentTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+            } else {
+                // No saved preference, check system preference
+                const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (prefersDarkScheme) {
+                    document.documentElement.classList.add('dark');
+                }
+            }
+        })();
+    </script>
+
     <link href="output.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
@@ -20,7 +39,8 @@
 
     <div class="min-h-screen flex flex-col items-center justify-center px-4 py-16">
         <h1 class="text-5xl font-bold mb-12 text-center">Support Me</h1>
-        <p class="mb-12 text-center text-lg max-w-2xl">Monetary support helps me continue creating projects that I enjoy.
+        <p class="mb-12 text-center text-lg max-w-2xl">Monetary support helps me continue creating projects that I
+            enjoy.
             You
             can donate via GitHub Sponsors, Ko-fi, or Patreon.<br><br>You may also support me by just spreading the word
             about my projects. &lt;3</p>
@@ -144,7 +164,28 @@
             contributions allow me to keep creating content for everyone.</p>
     </div>
 
-    <script src="js/theme.js"></script>
+    <script>
+        // Theme toggling
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleButton = document.getElementById('theme-toggle');
+
+            // Update the icon based on current theme
+            const updateIcon = (isDarkMode) => {
+                themeToggleButton.innerHTML = isDarkMode
+                    ? '<i class="fas fa-moon"></i>'
+                    : '<i class="fas fa-sun"></i>';
+            };
+
+            updateIcon(document.documentElement.classList.contains('dark'));
+
+            // Handle theme toggle clicks
+            themeToggleButton.addEventListener('click', () => {
+                const isDarkMode = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+                updateIcon(isDarkMode);
+            });
+        });
+    </script>
 </body>
 
 </html>
