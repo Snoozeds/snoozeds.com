@@ -1,132 +1,92 @@
-let currentImageIndex = 1;
-const maxImagesULE = 5;
-const maxImagesPAM = 4;
-const maxImagesWeb = 2;
+const modal = document.getElementById('imageModal');
+const modalImage = document.getElementById('modalImage');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
 
-function getCurrentMaxImages() {
-    const currentImageType = getCurrentImageType();
-    if (currentImageType === 'ule') {
-        return maxImagesULE;
-    } else if (currentImageType === 'pam') {
-        return maxImagesPAM;
-    } else if (currentImageType === 'websites') {
-        return maxImagesWeb;
-    }
+// Define galleries
+const galleries = {
+    pam: [
+        "assets/pam1.png",
+        "assets/pam2.png",
+        "assets/pam3.png",
+        "assets/pam4.png",
+        "assets/pam5.png",
+        "assets/pam6.png"
+    ],
+    ule: [
+        "assets/ule1.png",
+        "assets/ule2.png",
+        "assets/ule3.png",
+        "assets/ule4.png",
+        "assets/ule5.png"
+    ],
+    websites: [
+        "assets/websites1.png",
+        "assets/websites2.png",
+        "assets/websites3.png"
+    ]
+};
+
+let currentGallery = [];
+let currentIndex = 0;
+
+function showImage(index) {
+    if (index < 0) index = currentGallery.length - 1;
+    if (index >= currentGallery.length) index = 0;
+    currentIndex = index;
+    modalImage.src = currentGallery[currentIndex];
 }
 
-function changeImage(delta, maxImages) {
-    currentImageIndex += delta;
-    if (currentImageIndex < 1) {
-        currentImageIndex = maxImages;
-    } else if (currentImageIndex > maxImages) {
-        currentImageIndex = 1;
-    }
-    const fullImageSrc = `assets/${getCurrentImageType()}${currentImageIndex}.png`;
-    document.getElementById('fullImage').src = fullImageSrc;
-    updateImageCounter(maxImages);
-    toggleArrows();
+function openModal(galleryKey, startIndex) {
+    currentGallery = galleries[galleryKey];
+    currentIndex = startIndex;
+    showImage(currentIndex);
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
 }
 
-function updateImageCounter(maxImages) {
-    const counterElement = document.getElementById('imageCounter');
-    const hasMultipleImages = maxImages > 1;
-    if (hasMultipleImages) {
-        counterElement.textContent = `Image ${currentImageIndex} of ${maxImages}`;
-        counterElement.style.display = 'block';
-    } else {
-        counterElement.style.display = 'none';
-    }
-}
+window.closeModal = function () {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+};
 
-let currentImageType;
-const portfolioImages = document.querySelectorAll('.portfolio-image');
+// Arrows
+prevBtn.addEventListener('click', () => showImage(currentIndex - 1));
+nextBtn.addEventListener('click', () => showImage(currentIndex + 1));
 
-portfolioImages.forEach(image => {
-    image.addEventListener('click', function() {
-        const fullImageSrc = this.getAttribute('data-src');
-        document.getElementById('fullImage').src = fullImageSrc;
-        document.getElementById('overlay').style.display = 'flex';
-        currentImageIndex = 1;
-        toggleArrows();
-        currentImageType = getCurrentImageType();
-        let maxImages;
-        if (currentImageType === 'ule') {
-            maxImages = maxImagesULE;
-        } else if (currentImageType === 'pam') {
-            maxImages = maxImagesPAM;
-        } else if (currentImageType === 'websites') {
-            maxImages = maxImagesWeb;
-        }
-        updateImageCounter(maxImages);
-    });
+// Bind previews
+document.querySelectorAll('[data-gallery]').forEach((img) => {
+    const galleryKey = img.getAttribute('data-gallery');
+    const index = parseInt(img.getAttribute('data-index'), 10);
+    img.addEventListener('click', () => openModal(galleryKey, index));
 });
 
-function getCurrentImageType() {
-    const fullImageSrc = document.getElementById('fullImage').src;
-    if (fullImageSrc.includes('ule')) {
-        return 'ule';
-    } else if (fullImageSrc.includes('pam')) {
-        return 'pam';
-    } else if (fullImageSrc.includes('websites')) {
-        return 'websites';
-    }
-}
-
-document.getElementById('overlay').addEventListener('click', function(e) {
-    if (e.target.id === 'overlay') {
-        this.style.display = 'none';
-    }
+// Background click closes
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
 });
 
-function toggleArrows() {
-    const hasMultipleImages = getCurrentMaxImages() > 1;
-    const arrows = document.querySelectorAll('.arrow');
-    arrows.forEach(arrow => {
-        arrow.style.display = hasMultipleImages ? 'block' : 'none';
-    });
-}
-
-document.addEventListener('keydown', function(event) {
-    const overlay = document.getElementById('overlay');
-    const fullImageSrc = document.getElementById('fullImage').src.toLowerCase();
-    const hasMultipleImages = overlay.style.display === 'flex' &&
-        (fullImageSrc.includes('ule') || fullImageSrc.includes('pam') || fullImageSrc.includes('websites'));
-
-    const currentType = getCurrentImageType();
-    const maxImages = currentType === 'ule' ? maxImagesULE :
-                      currentType === 'pam' ? maxImagesPAM :
-                      maxImagesWeb;
-
-    if (hasMultipleImages) {
-        if (event.key === 'ArrowLeft') {
-            changeImage(-1, maxImages);
-        } else if (event.key === 'ArrowRight') {
-            changeImage(1, maxImages);
-        }
-    }
+// Keyboard
+document.addEventListener('keydown', (e) => {
+    if (modal.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+    if (e.key === 'ArrowRight') showImage(currentIndex + 1);
 });
 
-function closeOverlay() {
-    document.getElementById('overlay').style.display = 'none';
-}
-
+// Swipe
 let touchStartX = 0;
 let touchEndX = 0;
-const swipeThreshold = 30;
 
-document.getElementById('fullImage').addEventListener('touchstart', function(event) {
-    touchStartX = event.touches[0].clientX;
+modal.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
 });
 
-document.getElementById('fullImage').addEventListener('touchmove', function(event) {
-    touchEndX = event.touches[0].clientX;
-});
-
-document.getElementById('fullImage').addEventListener('touchend', function() {
-    const deltaX = touchEndX - touchStartX;
-    if (deltaX > swipeThreshold) {
-        changeImage(-1, getCurrentMaxImages());
-    } else if (deltaX < -swipeThreshold) {
-        changeImage(1, getCurrentMaxImages());
+modal.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) showImage(currentIndex + 1); // swipe left -> next
+        else showImage(currentIndex - 1);          // swipe right -> prev
     }
 });

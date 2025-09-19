@@ -7,11 +7,12 @@
     <title>Snoozeds</title>
     <meta name="description" content="About me" />
     <meta name="author" content="Snoozeds" />
-    <meta name="theme-color" content="#111827" />
+    <meta name="theme-color" content="#6b21a8" />
     <meta property="og:title" content="Snoozeds" />
     <meta property="og:description" content="About me" />
     <meta property="og:image" content="https://snoozeds.com/assets/profile.png" />
     <meta property="og:url" content="https://snoozeds.com" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
 
     <script>
         // Update theme
@@ -32,204 +33,330 @@
     </script>
 
     <!-- Include Tailwind CSS -->
-    <link href="output.css" rel="stylesheet" />
+    <link href="css/output.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="transition duration-700 ease-in-out dark:bg-midnight">
+<body
+    class="transition-all duration-700 ease-in-out bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 dark:from-midnight dark:via-gray-900 dark:to-purple-900 min-h-screen">
     <!-- Dark/light toggle -->
     <button id="theme-toggle"
-        class="absolute top-4 right-4 p-2 rounded-full bg-gray-800 text-white dark:bg-white dark:text-gray-800">
-        <i class="fas fa-sun"></i>
+        class="fixed top-6 right-6 p-3 rounded-full bg-white/90 backdrop-blur-sm text-gray-800 dark:bg-gray-800/90 dark:text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 z-50">
+        <i class="fas fa-sun text-lg"></i>
     </button>
-    <div class="flex justify-center items-center min-h-screen">
-        <div class="w-full md:w-3/4 lg:w-1/2 xl:w-1/3">
-            <div class="flex flex-col md:flex-row items-center">
-                <!-- Enlarged image -->
-                <div id="imageModal"
-                    class="hidden fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center">
-                    <span class="close-modal absolute top-4 right-6 text-white text-3xl cursor-pointer">&times;</span>
-                    <img id="modalImage" class="max-w-full max-h-full" alt="Enlarged Profile Image" />
-                </div>
-                <!-- Image -->
-                <img id="profileImage" src="assets/profile.png" alt="logo"
-                    class="w-48 md:w-64 h-auto rounded md:mr-4 mb-4 md:mb-0 border-solid border-2 border-black dark:border-white hover:cursor-zoom-in transition duration-300 ease-in-out"
-                    style="max-width: 100%; height: auto;" />
 
-                <!-- Text -->
-                <div class="flex flex-col items-start">
-                    <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Hi, I'm Snoozeds. <span
-                            class="hover:cursor-help text-md font-bold text-pink-600 dark:text-purple-600"><span
-                                class="tooltip" data-tooltip="🏳️‍⚧️ male to female.">&lpar;she/her&rpar;</span></span>
-                        <span class="wave">👋</span>
+    <!-- Hero Section -->
+    <div class="container mx-auto px-6 py-16">
+        <div class="flex flex-col lg:flex-row items-center justify-center min-h-[60vh] gap-12">
+            <!-- Profile Image -->
+            <div class="relative group">
+                <!-- Profile glow -->
+                <div
+                    class="absolute -inset-4 bg-gradient-to-r from-purple-700 via-purple-900 to-purple-700 rounded-full opacity-30 group-hover:opacity-50 blur-lg transition-all duration-500 animate-gradient gradient-bg">
+                </div>
+                <img id="profileImage" src="assets/profile.png" alt="Snoozeds Profile"
+                    class="relative w-64 h-64 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-purple-900 dark:border-purple-800 shadow-2xl group-hover:shadow-purple-500/25 transition-all duration-500 hover:scale-105 cursor-zoom-in animate-float" />
+            </div>
+
+            <!-- Hero Text -->
+            <div class="text-center lg:text-left max-w-2xl">
+                <div class="mb-6">
+                    <h1
+                        class="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-purple-800 via-purple-700 to-purple-900 bg-clip-text text-transparent mb-4">
+                        Hi, I'm Snoozeds
                     </h1>
-                    <p class="text-lg font-bold text-gray-800 dark:text-white max-w-md mb-5">
-                        I'm an autodidact developer from England, UK. <br />
-                        <br />
-                        Main experience: HTML/CSS/JS, C# <br /> Also learning: Python, GDScript
-                    </p>
-                    <!-- Socials -->
-                    <div class="flex items-center sm:justify-center md:justify-start">
+                    <div class="flex items-center justify-center lg:justify-start gap-2 mb-2">
+                        <span class="text-lg font-semibold text-purple-400 dark:text-purple-300">
+                            (she/her)
+                        </span>
+                    </div>
+                </div>
 
-                        <!-- blog -->
-                        <a href="https://blog.snoozeds.com" target="_blank"
-                            class="mr-4 hover:scale-110 transition duration-500 ease-in-out">
-                            <i class="fas fa-newspaper text-4xl text-gray-800 dark:text-white"></i>
-                        </a>
+                <p class="text-xl lg:text-2xl text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+                    I'm an <span
+                        class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-800 to-purple-600">autodidact
+                        developer</span> from England, UK. <span class="wave text-3xl">👋</span>
+                </p>
 
-                        <!-- github -->
-                        <a href="https://github.com/Snoozeds" target="_blank"
-                            class="mr-4 hover:scale-110 transition duration-500 ease-in-out">
-                            <i class="fab fa-github text-4xl text-gray-800 dark:text-white"></i>
-                        </a>
-                        <!-- twitter -->
-                        <a href="https://twitter.com/Snoozeds" target="_blank"
-                            class="mr-4 hover:scale-110 transition duration-500 ease-in-out">
-                            <i class="fab fa-twitter text-4xl" style="color: #1d9bf0;"></i>
-                        </a>
-                        <!-- youtube -->
-                        <a href="https://www.youtube.com/channel/UCIL7el6oqypKDaZZSjVmP_g" target="_blank"
-                            class="mr-4 hover:scale-110 transition duration-700 ease-in-out">
-                            <i class="fab fa-youtube text-4xl" style="color: red;"></i>
-                        </a>
-                        <!-- steam -->
-                        <a href="https://steamcommunity.com/id/Snoozeds/" target="_blank"
-                            class="mr-4 hover:scale-110 transition duration-500 ease-in-out">
-                            <i class="fab fa-steam text-4xl text-gray-800 dark:text-white"></i>
-                        </a>
-                        <!-- pronouns.page -->
-                        <a href="https://en.pronouns.page/@snoozeds" target="_blank"
-                            class="mr-4 hover:scale-110 transition duration-500 ease-in-out">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 650" width="50" height="50">
-                                <path
-                                    d="M396.52 174.35c1.35-2.4.21-4.35-2.54-4.35l-48.2.03c-2.75 0-6.15 1.94-7.54 4.31l-118.1 199.77c-16.48 27.15-39.48 33.15-61.58 30.47-37.94-4.6-58.34-32.45-58.34-69.54 0-37.25 30.31-67.56 67.56-67.56h75c2.75 0 6.12-1.95 7.48-4.34l27.03-47.2c1.37-2.39.23-4.34-2.52-4.34h-107c-68.06 0-123.44 55.37-123.44 123.44 0 32.89 12.85 68.36 36.22 91.54 23.03 22.84 53.8 31.21 86.64 31.89 18.54.21 69.46-.21 93.33-42.68 26.73-47.57 136-241.44 136-241.44zM571.94 244.44c-23.03-22.84-53.8-31.21-86.64-31.89-18.54-.21-69.46.21-93.33 42.68-26.72 47.55-136 241.42-136 241.42-1.35 2.4-.21 4.35 2.54 4.35l48.2-.03c2.75 0 6.15-1.94 7.54-4.31l118.1-199.77c16.48-27.15 39.48-33.15 61.58-30.47 37.94 4.6 58.34 32.45 58.34 69.54 0 37.25-30.31 67.56-67.56 67.56h-75c-2.75 0-6.12 1.95-7.48 4.34l-27.03 47.2c-1.37 2.39-.23 4.34 2.52 4.34h107c68.06 0 123.44-55.37 123.44-123.44 0-32.87-12.85-68.34-36.22-91.52z"
-                                    fill="#C71585" />
-                            </svg>
+                <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-2xl p-6 shadow-xl mb-8">
+                    <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-3">Tech Stack</h3>
+                    <div class="grid grid-cols-2 gap-4 text-gray-700 dark:text-gray-300">
+                        <div>
+                            <span class="font-semibold text-green-600 dark:text-green-400">Main:</span><br>
+                            HTML/CSS/JS, C#
+                        </div>
+                        <div>
+                            <span class="font-semibold text-blue-600 dark:text-blue-400">Learning:</span><br>
+                            Python, GDScript
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="flex items-center justify-center lg:justify-start gap-4">
+
+                    <a href="/support" target="_blank"
+                        class="relative group p-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+                        <i class="fa-solid fa-heart text-2xl text-red-500 dark:text-red"></i>
+                        <span
+                            class="absolute bottom-full mb-2 w-max opacity-0 group-hover:opacity-100 transition-opacity text-sm bg-gray-800 text-white dark:bg-gray-900 dark:text-gray-100 px-2 py-1 rounded-lg pointer-events-none">
+                            Support me
+                        </span>
+                    </a>
+
+                    <a href="https://github.com/Snoozeds" target="_blank"
+                        class="relative group p-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+                        <i class="fab fa-github text-2xl text-gray-800 dark:text-white"></i>
+                        <span
+                            class="absolute bottom-full mb-2 w-max opacity-0 group-hover:opacity-100 transition-opacity text-sm bg-gray-800 text-white dark:bg-gray-900 dark:text-gray-100 px-2 py-1 rounded-lg pointer-events-none">
+                            Visit my GitHub
+                        </span>
+                    </a>
+
+                    <a href="https://twitter.com/Snoozeds" target="_blank"
+                        class="relative group p-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+                        <i class="fab fa-twitter text-2xl text-blue-500"></i>
+                        <span
+                            class="absolute bottom-full mb-2 w-max opacity-0 group-hover:opacity-100 transition-opacity text-sm bg-gray-800 text-white dark:bg-gray-900 dark:text-gray-100 px-2 py-1 rounded-lg pointer-events-none">
+                            Follow me on Twitter
+                        </span>
+                    </a>
+
+                    <a href="https://www.youtube.com/channel/UCIL7el6oqypKDaZZSjVmP_g" target="_blank"
+                        class="relative group p-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+                        <i class="fab fa-youtube text-2xl text-red-500"></i>
+                        <span
+                            class="absolute bottom-full mb-2 w-max opacity-0 group-hover:opacity-100 transition-opacity text-sm bg-gray-800 text-white dark:bg-gray-900 dark:text-gray-100 px-2 py-1 rounded-lg pointer-events-none">
+                            Subscribe to my YouTube
+                        </span>
+                    </a>
+
+                    <a href="https://steamcommunity.com/id/Snoozeds/" target="_blank"
+                        class="relative group p-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+                        <i class="fab fa-steam text-2xl text-gray-800 dark:text-white"></i>
+                        <span
+                            class="absolute bottom-full mb-2 w-max opacity-0 group-hover:opacity-100 transition-opacity text-sm bg-gray-800 text-white dark:bg-gray-900 dark:text-gray-100 px-2 py-1 rounded-lg pointer-events-none">
+                            Visit my Steam
+                        </span>
+                    </a>
+
+                    <a href="https://blog.snoozeds.com" target="_blank"
+                        class="relative group p-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 hover:-translate-y-1">
+                        <i class="fas fa-newspaper text-2xl text-gray-800 dark:text-white"></i>
+                        <span
+                            class="absolute bottom-full mb-2 w-max opacity-0 group-hover:opacity-100 transition-opacity text-sm bg-gray-800 text-white dark:bg-gray-900 dark:text-gray-100 px-2 py-1 rounded-lg pointer-events-none">
+                            Read my blog
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Section -->
+    <div class="container mx-auto px-6 py-16">
+        <div class="text-center mb-16">
+            <h2
+                class="text-4xl lg:text-5xl font-bold bg-gradient-to-r from-purple-800 via-purple-700 to-purple-900 bg-clip-text text-transparent mb-4">
+                Featured Projects
+            </h2>
+            <p class="text-xl text-gray-600 dark:text-gray-400">Tools and applications I've built</p>
+        </div>
+
+        <div class="space-y-32">
+            <!-- Project 1: ULE -->
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 relative">
+                    <div
+                        class="absolute -inset-2 bg-gradient-to-r from-purple-800 to-purple-900 rounded-2xl opacity-20 blur-lg">
+                    </div>
+                    <img src="assets/ULE-preview.png" alt="UnrealLocresEditor Preview"
+                        class="relative w-full rounded-2xl shadow-2xl card-hover cursor-pointer border border-white/20"
+                        data-gallery="ule" data-index="0" />
+                </div>
+                <div class="lg:w-1/2 lg:pl-8">
+                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl card-hover">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-3 h-3 bg-gradient-to-r from-purple-700 to-purple-900 rounded-full"></div>
+                            <h3 class="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
+                                UnrealLocresEditor
+                            </h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-semibold">C#</span>
+                            <span
+                                class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-semibold">AvaloniaUI</span>
+                            <span
+                                class="px-3 py-1 bg-sky-100 dark:bg-sky-900/30 text-sky-800 dark:text-sky-300 rounded-full text-sm font-semibold">Windows</span>
+                            <span
+                                class="px-3 py-1 bg-gray-300 dark:bg-gray-900/30 text-gray-800 dark:text-gray-300 rounded-full text-sm font-semibold">Linux</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                            A powerful, open-source GUI application designed for modding Unreal Engine games.
+                            It allows simple modding of game localisation files (locres), changing displayed text and
+                            creating
+                            translations with an easy-to-use interface.
+                        </p>
+                        <a href="https://github.com/Snoozeds/UnrealLocresEditor" target="_blank"
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-800 to-purple-900 text-white font-semibold rounded-xl hover:from-purple-900 hover:to-purple-950 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                            <i class="fab fa-github"></i>
+                            View on GitHub
                         </a>
                     </div>
                 </div>
             </div>
-            <!-- 'Portfolio' Section -->
-            <div class="mt-10">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                    <div class="flex flex-col items-center">
-                        <a class="text-lg font-semibold mb-2 text-gray-800 dark:text-white hover:text-cyan-600 hover:underline"
-                            href="https://github.com/Snoozeds/UnrealLocresEditor" target="_blank">UnrealLocresEditor</a>
-                        <img src="assets/ULE-preview.png" alt="Image 1"
-                            class="border-solid border-2 border-pink-600 dark:border-white portfolio-image"
-                            data-src="assets/ule1.png" />
-                        <p class="text-sm text-gray-800 mt-2 dark:text-white">
-                            Toolkit: C#, Avalonia<br />
-                            <br />
-                            A tool made for modding Unreal Engine games, UnrealLocresEditor is an open-source GUI
-                            application that
-                            allows the user to modify a game's localisation files, changing the text a game displays, or
-                            making
-                            translations for a game.
-                        </p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <a class="text-lg font-semibold mb-2 text-gray-800 dark:text-white hover:text-cyan-600 hover:underline"
-                            href="https://github.com/Snoozeds/PD3AudioModder" target="_blank">PD3AudioModder</a>
-                        <div class="relative">
-                            <img src="assets/pam-preview.png" alt="Image 2"
-                                class="border-solid border-2 border-pink-600 dark:border-white portfolio-image"
-                                data-src="assets/pam1.png" />
-                        </div>
-                        <p class="text-sm text-gray-800 mt-2 dark:text-white">
-                            Toolkit: C#, Avalonia<br />
-                            <br />
-                            A tool designed for modding PAYDAY 3's audio files, including converting and packaging them
-                            into a
-                            mod format (.pak) for you,
-                            PD3AudioModder makes modding a breeze.
-                        </p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <a class="text-lg font-semibold mb-2 text-gray-800 dark:text-white hover:text-cyan-600 hover:underline"
-                            href="https://github.com/Snoozeds?tab=repositories&q=website&type=&language=&sort="
-                            target="_blank">Websites</a>
-                        <img src="assets/websites-preview.png" alt="Image 3"
-                            class="border-solid border-2 border-pink-600 dark:border-white portfolio-image"
-                            data-src="assets/websites1.png" />
-                        <p class="text-sm text-gray-800 mt-2 dark:text-white">
-                            Toolkit: Tailwind, Docsify, Bootstrap<br />
-                            <br />
-                            I have made multiple websites for my own projects, all open-source on Github. I also wrote
-                            extensive
-                            documentation in the past, alongside working with Docker, Uptime-Kuma, and Ubuntu.
-                        </p>
-                    </div>
-                </div>
 
-                <!-- Last.fm embed -->
-                <div class="flex justify-center mt-10">
-                    <div class="flex flex-col items-center">
-                        <h2 class="text-lg font-semibold mb-2 text-gray-800 dark:text-white">Recently Played</h2>
-                        <div class="border-solid border-2 border-pink-600 dark:border-white"
-                            style="width: 400px; height: 330px; overflow: hidden;">
-                            <iframe
-                                src="https://lastfm-recently-played.vercel.app/api?user=Snoozeds&t={{current_timestamp}}"
-                                width="100%" height="100%"
-                                style="border: none; display: block; overflow: hidden; scrolling: no; -webkit-overflow-scrolling: touch;"
-                                scrolling="no">
-                            </iframe>
+            <!-- Project 2: PAM -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                <div class="lg:w-1/2 relative">
+                    <div
+                        class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl opacity-20 blur-lg">
+                    </div>
+                    <img src="assets/pam-preview.png" alt="PD3AudioModder Preview" id="galleryPreview"
+                        class="relative w-full rounded-2xl shadow-2xl card-hover cursor-pointer border border-white/20"
+                        data-gallery="pam" data-index="0" />
+                </div>
+                <div class="lg:w-1/2 lg:pr-8">
+                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl card-hover">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-3 h-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full"></div>
+                            <h3 class="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
+                                PD3AudioModder
+                            </h3>
                         </div>
-                        <p class="text-sm text-gray-800 mt-2 dark:text-white">My recent Last.fm scrobbles</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 rounded-full text-sm font-semibold">C#</span>
+                            <span
+                                class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-semibold">AvaloniaUI</span>
+                            <span
+                                class="px-3 py-1 bg-sky-100 dark:bg-sky-900/30 text-sky-800 dark:text-sky-300 rounded-full text-sm font-semibold">Windows</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                            A specialised tool for modding PAYDAY 3's audio files. Features automated conversion and
+                            packaging into mod format (.pak), making audio editing less painful for the modding
+                            community.
+                        </p>
+                        <a href="https://github.com/Snoozeds/PD3AudioModder" target="_blank"
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-cyan-700 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                            <i class="fab fa-github"></i>
+                            View on GitHub
+                        </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Overlay for full-sized images -->
-            <div class="overlay" id="overlay">
-                <img id="fullImage" src="" alt="Full Image" />
-                <div class="absolute bottom-6 left-0 right-0 flex justify-center">
-                    <div class="bg-gray-800 bg-opacity-75 px-2 py-1 rounded-lg text-white" id="imageCounter"></div>
-                    <div class="close-button" onclick="closeOverlay()">
-                        <div class="close-button-container">
-                            <i class="fas fa-times"></i>
-                        </div>
+            <!-- Project 3: Websites -->
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 relative">
+                    <div
+                        class="absolute -inset-2 bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl opacity-20 blur-lg">
                     </div>
+                    <img src="assets/websites-preview.png" alt="Websites Preview"
+                        class="relative w-full rounded-2xl shadow-2xl card-hover cursor-pointer border border-white/20"
+                        data-gallery="websites" data-index="0" />
                 </div>
-                <div class="arrow-container">
-                    <!-- Left arrow -->
-                    <div class="arrow arrow-left" onclick="changeImage(-1, getCurrentMaxImages())">
-                        <i class="fas fa-arrow-left"></i>
-                    </div>
-                    <!-- Right arrow -->
-                    <div class="arrow arrow-right" onclick="changeImage(1, getCurrentMaxImages())">
-                        <i class="fas fa-arrow-right"></i>
+                <div class="lg:w-1/2 lg:pl-8">
+                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl card-hover">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-3 h-3 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full"></div>
+                            <h3 class="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
+                                Web Development
+                            </h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300 rounded-full text-sm font-semibold">Tailwind</span>
+                            <span
+                                class="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 rounded-full text-sm font-semibold">Docsify</span>
+                            <span
+                                class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-semibold">Bootstrap</span>
+                            <span
+                                class="px-3 py-1 bg-gray-300 dark:bg-gray-900/30 text-gray-800 dark:text-gray-300 rounded-full text-sm font-semibold">Linux</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                            Multiple open-source websites. Experience with
+                            web technologies, Docker deployment, monitoring with Uptime-Kuma, and server
+                            management on Ubuntu.
+                        </p>
+                        <a href="https://github.com/Snoozeds?tab=repositories&q=website&type=&language=&sort="
+                            target="_blank"
+                            class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                            <i class="fab fa-github"></i>
+                            View Repositories
+                        </a>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <script>
-                // Theme toggling
-                document.addEventListener('DOMContentLoaded', () => {
-                    const themeToggleButton = document.getElementById('theme-toggle');
+    <!-- Last.fm Section -->
+    <div class="container mx-auto px-6 py-16">
+        <div class="text-center mb-12">
+            <h2
+                class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-800 to-purple-900 bg-clip-text text-transparent mb-4 pb-2">
+                Currently Listening
+            </h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400">My recent Last.fm activity</p>
+        </div>
 
-                    // Update the icon based on current theme
-                    const updateIcon = (isDarkMode) => {
-                        themeToggleButton.innerHTML = isDarkMode
-                            ? '<i class="fas fa-moon"></i>'
-                            : '<i class="fas fa-sun"></i>';
-                    };
+        <div class="flex justify-center">
+            <div
+                class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl card-hover max-w-md w-full">
+                <div class="relative overflow-hidden rounded-xl">
+                    <iframe src="https://lastfm-recently-played.vercel.app/api?user=Snoozeds&t={{current_timestamp}}"
+                        width="100%" height="330" style="border: none; display: block;" class="rounded-xl">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    updateIcon(document.documentElement.classList.contains('dark'));
+    <div id="imageModal"
+        class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+        <!-- Prev -->
+        <button id="prevBtn"
+            class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-50">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <!-- Next -->
+        <button id="nextBtn"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-50">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+        <div class="relative max-w-4xl max-h-full">
+            <!-- Close -->
+            <button class="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300 transition-colors"
+                onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <img id="modalImage" class="max-w-full max-h-full rounded-xl shadow-2xl" alt="Enlarged Image" />
+        </div>
+    </div>
 
-                    // Handle theme toggle clicks
-                    themeToggleButton.addEventListener('click', () => {
-                        const isDarkMode = document.documentElement.classList.toggle('dark');
-                        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-                        updateIcon(isDarkMode);
-                    });
-                });
-            </script>
 
-            <script src="js/gallery.js"></script>
-            <script src="js/imageModal.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggleButton = document.getElementById('theme-toggle');
+            const updateIcon = (isDarkMode) => {
+                themeToggleButton.innerHTML = isDarkMode
+                    ? '<i class="fas fa-moon text-lg"></i>'
+                    : '<i class="fas fa-sun text-lg"></i>';
+            };
+            updateIcon(document.documentElement.classList.contains('dark'));
+            themeToggleButton.addEventListener('click', () => {
+                const isDarkMode = document.documentElement.classList.toggle('dark');
+                localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+                updateIcon(isDarkMode);
+            });
+        })
+    </script>
+
+    <script src="js/gallery.js"></script>
 </body>
 
 </html>
