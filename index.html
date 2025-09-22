@@ -318,6 +318,17 @@
                 </div>
             </div>
 
+            <!-- Stats -->
+            <div class="w-full max-w-6xl mx-auto overflow-hidden rounded-xl">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white text-center">Stats</h3>
+                <div class="w-full h-[180px] md:h-[200px]">
+                    <iframe
+                        src="https://lastfm-embed.vercel.app/api/stats?user=Snoozeds&theme=cyberpunk&showProfile=false"
+                        width="100%" height="100%" style="border:none; overflow:hidden;" class="rounded-xl">
+                    </iframe>
+                </div>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- Top Tracks -->
                 <div class="w-full overflow-hidden rounded-xl">
@@ -332,7 +343,8 @@
 
                 <!-- Top Artists -->
                 <div class="w-full overflow-hidden rounded-xl">
-                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3 text-center">Top Artists</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3 text-center">Top Artists
+                    </h3>
                     <div class="w-full h-[500px] md:h-[550px]">
                         <iframe
                             src="https://lastfm-embed.vercel.app/api/top-artists?user=Snoozeds&theme=cyberpunk&showProfile=false&limit=5&period=overall&layout=vertical&usePlaceholderImage=false"
