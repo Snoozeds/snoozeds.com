@@ -301,7 +301,7 @@
                 class="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-purple-800 to-purple-900 bg-clip-text text-transparent mb-4 pb-2">
                 Last.fm
             </h2>
-            <p class="text-lg text-gray-600 dark:text-gray-400">My Last.fm stats</p>
+            <p class="text-lg text-gray-600 dark:text-gray-400">My Last.fm stats (widgets also made by me!)</p>
         </div>
 
         <!-- Currently Playing -->
@@ -311,7 +311,7 @@
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3 text-center">Now Playing</h3>
                     <div class="aspect-[2/1] w-full">
                         <iframe
-                            src="https://lastfm-embed.vercel.app/api/currently-playing?user=Snoozeds&theme=cyberpunk&showProfile=false"
+                            src="https://lastfm-embed.vercel.app/api/currently-playing?user=Snoozeds&theme=cyberpunk&showProfile=false&showTitle=false"
                             width="100%" height="100%" style="border:none; overflow:hidden;" class="rounded-xl">
                         </iframe>
                     </div>
@@ -323,7 +323,7 @@
                 <h3 class="text-lg font-semibold text-gray-800 dark:text-white text-center">Stats</h3>
                 <div class="w-full h-[180px] md:h-[200px]">
                     <iframe
-                        src="https://lastfm-embed.vercel.app/api/stats?user=Snoozeds&theme=cyberpunk&showProfile=false"
+                        src="https://lastfm-embed.vercel.app/api/stats?user=Snoozeds&theme=cyberpunk&showTitle=false"
                         width="100%" height="100%" style="border:none; overflow:hidden;" class="rounded-xl">
                     </iframe>
                 </div>
@@ -335,7 +335,7 @@
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3 text-center">Top Tracks</h3>
                     <div class="w-full h-[500px] md:h-[550px]">
                         <iframe
-                            src="https://lastfm-embed.vercel.app/api/top-tracks?user=Snoozeds&theme=cyberpunk&layout=vertical&limit=5 &showProfile=false"
+                            src="https://lastfm-embed.vercel.app/api/top-tracks?user=Snoozeds&theme=cyberpunk&layout=vertical&limit=5&showTitle=false"
                             width="100%" height="100%" style="border:none; overflow:hidden;" class="rounded-xl">
                         </iframe>
                     </div>
@@ -347,7 +347,7 @@
                     </h3>
                     <div class="w-full h-[500px] md:h-[550px]">
                         <iframe
-                            src="https://lastfm-embed.vercel.app/api/top-artists?user=Snoozeds&theme=cyberpunk&showProfile=false&limit=5&period=overall&layout=vertical&usePlaceholderImage=false"
+                            src="https://lastfm-embed.vercel.app/api/top-artists?user=Snoozeds&theme=cyberpunk&limit=5&period=overall&layout=vertical&usePlaceholderImage=false&showTitle=false"
                             width="100%" height="100%" style="border:none; overflow:hidden;" class="rounded-xl">
                         </iframe>
                     </div>
@@ -358,7 +358,7 @@
                     <h3 class="text-lg font-semibold text-gray-800 dark:text-white mb-3 text-center">Top Albums</h3>
                     <div class="w-full h-[500px] md:h-[550px]">
                         <iframe
-                            src="https://lastfm-embed.vercel.app/api/top-albums?user=Snoozeds&theme=cyberpunk&showProfile=false&limit=5&period=overall&layout=vertical"
+                            src="https://lastfm-embed.vercel.app/api/top-albums?user=Snoozeds&theme=cyberpunk&limit=5&period=overall&layout=vertical&showTitle=false"
                             width="100%" height="100%" style="border:none; overflow:hidden;" class="rounded-xl">
                         </iframe>
                     </div>
