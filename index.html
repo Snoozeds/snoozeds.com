@@ -166,7 +166,64 @@
         </div>
 
         <div class="space-y-32">
-            <!-- Project 1: ULE -->
+            <!-- Project 1: SoDTools -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
+                <div class="lg:w-1/2 relative">
+                    <div
+                        class="absolute -inset-2 bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 rounded-2xl opacity-20 blur-lg">
+                    </div>
+                    <img src="assets/sod-preview.png" alt="SoDTools Preview"
+                        class="relative w-full rounded-2xl shadow-2xl card-hover cursor-pointer border border-white/20"
+                        data-gallery="sodtools" data-index="0" />
+                </div>
+                <div class="lg:w-1/2 lg:pr-8">
+                    <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-xl card-hover">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-3 h-3 bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 rounded-full">
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-bold text-gray-800 dark:text-white">
+                                Shadows of Doubt Tools
+                            </h3>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span
+                                class="px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-800 dark:text-cyan-300 rounded-full text-sm font-semibold">React</span>
+                            <span
+                                class="px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300 rounded-full text-sm font-semibold">Vite</span>
+                            <span
+                                class="px-3 py-1 bg-gray-100 dark:bg-gray-700/30 text-gray-800 dark:text-gray-300 rounded-full text-sm font-semibold">Express</span>
+                            <span
+                                class="px-3 py-1 bg-gray-300 dark:bg-gray-900/30 text-gray-800 dark:text-gray-300 rounded-full text-sm font-semibold">Web</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+                            A website that lets users view information about their <strong>Shadows of Doubt</strong>
+                            city by
+                            uploading <code>.cit</code> or <code>.citb</code> files.
+                        </p>
+                        <ul class="list-disc pl-6 text-gray-600 dark:text-gray-300 mb-6 space-y-2">
+                            <li>Can solve murder ciphers.</li>
+                            <li>Can display citizen profiles with birthday, height, hair/eye colour, passcodes, etc.
+                            </li>
+                            <li>City-wide searches by traits, such as hair colour or job (e.g. retail owner).
+                            </li>
+                        </ul>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="https://sodtools.com" target="_blank"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-rose-500 to-red-500 text-white font-semibold rounded-xl hover:from-rose-600 hover:to-red-600 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <i class="fas fa-paperclip"></i>
+                                Visit Website
+                            </a>
+                            <a href="https://github.com/Snoozeds/SoDTools" target="_blank"
+                                class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 via-rose-500 to-red-500 text-white font-semibold rounded-xl hover:from-pink-600 hover:via-rose-600 hover:to-red-600 transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                                <i class="fab fa-github"></i>
+                                View on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: ULE -->
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2 relative">
                     <div
@@ -209,7 +266,7 @@
                 </div>
             </div>
 
-            <!-- Project 2: PAM -->
+            <!-- Project 3: PAM -->
             <div class="flex flex-col lg:flex-row-reverse items-center gap-12">
                 <div class="lg:w-1/2 relative">
                     <div
@@ -249,7 +306,7 @@
                 </div>
             </div>
 
-            <!-- Project 3: Websites -->
+            <!-- Project 4: Websites -->
             <div class="flex flex-col lg:flex-row items-center gap-12">
                 <div class="lg:w-1/2 relative">
                     <div
@@ -368,7 +425,7 @@
     </div>
 
     <div id="imageModal"
-        class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4">
+        class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
         <!-- Prev -->
         <button id="prevBtn"
             class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-50">
@@ -379,19 +436,19 @@
             class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 z-50">
             <i class="fas fa-chevron-right"></i>
         </button>
-        <div class="relative max-w-4xl max-h-full">
+
+        <div class="relative w-full h-full flex items-center justify-center">
             <!-- Close -->
-            <button class="absolute -top-12 right-0 text-white text-2xl hover:text-gray-300 transition-colors"
+            <button class="absolute top-6 right-6 text-white text-3xl hover:text-gray-300 transition-colors"
                 onclick="closeModal()">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="relative w-full h-full flex justify-center overflow-y-auto">
-                <img id="modalImage" class="max-h-[90vh] max-w-[90vw] object-contain rounded-xl shadow-2xl my-auto"
-                    alt="Enlarged Image" />
-            </div>
+
+            <img id="modalImage"
+                class="max-h-[95vh] max-w-[95vw] w-auto h-auto object-contain rounded-xl shadow-2xl select-none"
+                alt="Enlarged Image" />
         </div>
     </div>
-
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {

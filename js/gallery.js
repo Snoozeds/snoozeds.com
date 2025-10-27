@@ -5,6 +5,16 @@ const nextBtn = document.getElementById('nextBtn');
 
 // Define galleries
 const galleries = {
+    sodtools: [
+        "assets/sod-preview.png",
+        "assets/sod1.png",
+        "assets/sod2.png",
+        "assets/sod3.png",
+        "assets/sod4.png",
+        "assets/sod5.png",
+        "assets/sod6.png",
+        "assets/sod7.png",
+    ],
     pam: [
         "assets/pam1.png",
         "assets/pam2.png",
