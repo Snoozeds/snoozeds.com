@@ -14,6 +14,8 @@ const galleries = {
         "assets/sod5.png",
         "assets/sod6.png",
         "assets/sod7.png",
+        "assets/sod8.png",
+        "assets/sod9.png"
     ],
     pam: [
         "assets/pam1.png",
